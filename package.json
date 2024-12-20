@@ -1,0 +1,40 @@
+{
+  "name": "gendiff",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[![Actions Status](https://github.com/lasnick7/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/lasnick7/frontend-project-46/actions)",
+  "main": "src/index.js",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasnick7/frontend-project-46.git"
+  },
+  "author": "lasnick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lasnick7/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/lasnick7/frontend-project-46#readme",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.25.9",
+    "@eslint/create-config": "^1.0.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2"
+  }
+}
