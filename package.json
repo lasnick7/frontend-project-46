@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/lasnick7/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "file-system": "^1.2.2",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
