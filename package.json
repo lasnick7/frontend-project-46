@@ -23,6 +23,7 @@
   "dependencies": {
     "commander": "^12.1.0",
     "file-system": "^1.2.2",
+    "lodash.union": "^4.6.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
