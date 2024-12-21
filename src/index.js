@@ -1,24 +1,24 @@
 import union from 'lodash.union';
 import fs from 'fs';
 import path from 'path';
-// import getParsedData from './getParsedData.js';
+import getParsedData from './getParsedData.js';
 
 export default function gendiff(filePath1, filePath2) {
-    const cwd = String(process.cwd());
-    filePath1 = String(filePath1);
-    filePath2 = String(filePath2);
+    // const cwd = String(process.cwd());
+    // filePath1 = String(filePath1);
+    // filePath2 = String(filePath2);
 
-    console.log("filePath1:", filePath1);
-    console.log("filePath2:", filePath2);
+    // console.log("filePath1:", filePath1);
+    // console.log("filePath2:", filePath2);
 
-    const fullPath1 = path.resolve(cwd, filePath1);
-    const fullPath2 = path.resolve(cwd, filePath2);
+    // const fullPath1 = path.resolve(process.cwd(), filePath1);
+    // const fullPath2 = path.resolve(process.cwd(), filePath2);
 
-    const file1 = fs.readFileSync(fullPath1, 'utf-8');
-    const file2 = fs.readFileSync(fullPath2, 'utf-8');
+    // const file1 = fs.readFileSync(fullPath1, 'utf-8');
+    // const file2 = fs.readFileSync(fullPath2, 'utf-8');
 
-    const data1 = JSON.parse(file1);
-    const data2 = JSON.parse(file2);
+    const data1 = getParsedData(filePath1);
+    const data2 = getParsedData(filePath2);
 
     const keys = union(Object.keys(data1), Object.keys(data2));
 
@@ -37,7 +37,8 @@ export default function gendiff(filePath1, filePath2) {
         }
         return acc;
     }
-    const resultArray = keys.reduce(callback, ['{']).push('}');
+    const resultArray = keys.reduce(callback, ['{']);
+    resultArray.push('}');
     return resultArray.join('\n');
-
+    //return result;
 };
