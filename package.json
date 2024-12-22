@@ -7,6 +7,13 @@
   "bin": {
     "gendiff": "./bin/gendiff.js"
   },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    }
+  },
   "scripts": {
     "test": "npx jest"
   },
