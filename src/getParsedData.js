@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import process from 'node:process';
 
 export default function getParsedData(filePath) {
     // получаем полный путь, используя текущую рабочую директорию
