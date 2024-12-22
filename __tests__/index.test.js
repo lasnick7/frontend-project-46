@@ -14,3 +14,15 @@ test('test file1&file2 json', () => {
     const fileB = getResolvePath('file2.json');
     expect(gendiff(fileA, fileB)).toEqual(result);
 });
+
+test('test file1&file2 yaml', () => {
+    const fileA = getResolvePath('file1.yaml');
+    const fileB = getResolvePath('file2.yaml');
+    expect(gendiff(fileA, fileB)).toEqual(result);
+});
+
+test('test file1&file2 yml', () => {
+    const fileA = getResolvePath('file1.yml');
+    const fileB = getResolvePath('file2.yml');
+    expect(gendiff(fileA, fileB)).toEqual(result);
+});
