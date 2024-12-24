@@ -1,4 +1,3 @@
-import union from 'lodash.union';
 import getParsedData from './getParsedData.js';
 import formatter from './formatters/formatter.js';
 import getTree from './buildTree.js';
