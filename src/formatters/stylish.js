@@ -36,9 +36,7 @@ export default function makeStylish(tree) {
         return joinStrings(line, depth);
       }
       case 'nested': {
-        const childrenString = branch.children.flatMap((child) =>
-          iter(child, depth + 1)
-        );
+        const childrenString = branch.children.flatMap((child) => iter(child, depth + 1));
         return `${currentIndent(depth)}  ${branch.key}: ${joinStrings(childrenString, depth + 1)}`;
       }
       case 'added': {

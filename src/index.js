@@ -7,5 +7,5 @@ export default function gendiff(filePath1, filePath2, format = 'stylish') {
   const data2 = getParsedData(filePath2);
 
   return formatter(getTree(data1, data2), format);
-  //return result;
+  // return result;
 }
