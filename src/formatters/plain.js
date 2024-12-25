@@ -19,8 +19,6 @@ function makePath(keys) {
 }
 
 function makePlainDiff(tree) {
-  const children = tree.children;
-
   const iter = (branch, path) => {
     const callback = (acc, child) => {
       const newPath = makePath([path, child.key]);
@@ -54,7 +52,7 @@ function makePlainDiff(tree) {
     return branch.reduce(callback, []);
   };
 
-  return iter(children, []);
+  return iter(tree.children, []);
 }
 
 export default function makePlain(data) {
