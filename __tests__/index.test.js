@@ -15,19 +15,19 @@ function getResolvePath(filePath) {
 }
 
 describe('test stylish', () => {
-  test('test stylish json', () => {
+  test('json', () => {
     const fileA = getResolvePath('file1.json');
     const fileB = getResolvePath('file2.json');
     expect(gendiff(fileA, fileB)).toEqual(resultStylish);
     expect(gendiff(fileA, fileB, 'stylish')).toEqual(resultStylish);
   });
-  test('test stylish yaml', () => {
+  test('yaml', () => {
     const fileA = getResolvePath('file1.yaml');
     const fileB = getResolvePath('file2.yaml');
     expect(gendiff(fileA, fileB)).toEqual(resultStylish);
     expect(gendiff(fileA, fileB, 'stylish')).toEqual(resultStylish);
   });
-  test('test stylish yml', () => {
+  test('yml', () => {
     const fileA = getResolvePath('file1.yml');
     const fileB = getResolvePath('file2.yml');
     expect(gendiff(fileA, fileB)).toEqual(resultStylish);
@@ -36,17 +36,17 @@ describe('test stylish', () => {
 });
 
 describe('test plain', () => {
-  test('test plain json', () => {
+  test('json', () => {
     const fileA = getResolvePath('file1.json');
     const fileB = getResolvePath('file2.json');
     expect(gendiff(fileA, fileB, 'plain')).toEqual(resultPlain);
   });
-  test('test plain yaml', () => {
+  test('yaml', () => {
     const fileA = getResolvePath('file1.yaml');
     const fileB = getResolvePath('file2.yaml');
     expect(gendiff(fileA, fileB, 'plain')).toEqual(resultPlain);
   });
-  test('test plain yml', () => {
+  test('yml', () => {
     const fileA = getResolvePath('file1.yml');
     const fileB = getResolvePath('file2.yml');
     expect(gendiff(fileA, fileB, 'plain')).toEqual(resultPlain);
@@ -54,17 +54,17 @@ describe('test plain', () => {
 });
 
 describe('test JSON', () => {
-  test('test JSON json', () => {
+  test('json', () => {
     const fileA = getResolvePath('file1.json');
     const fileB = getResolvePath('file2.json');
     expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
   });
-  test('test JSON yaml', () => {
+  test('yaml', () => {
     const fileA = getResolvePath('file1.yaml');
     const fileB = getResolvePath('file2.yaml');
     expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
   });
-  test('test JSON yml', () => {
+  test('yml', () => {
     const fileA = getResolvePath('file1.yml');
     const fileB = getResolvePath('file2.yml');
     expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
