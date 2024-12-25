@@ -2,7 +2,7 @@ import { resultStylish, resultPlain, resultJSON } from "../__fixtures__/results.
 import gendiff from "../src";
 import path from "node:path";
 import process from "node:process";
-import { test, expect, beforeAll } from "@jest/globals";
+import { test, expect } from "@jest/globals";
 import { describe } from "node:test";
 
 function getResolvePath(filePath) {
