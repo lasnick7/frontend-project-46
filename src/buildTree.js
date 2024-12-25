@@ -6,33 +6,33 @@ function buildTree(data1, data2) {
 
   const callback = (acc, key) => {
     if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
-      acc.concat({
+      acc = acc.concat({
         type: 'deleted',
         key,
         value: data1[key],
       });
     } else if (!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-      acc.concat({
+      acc = acc.concat({
         type: 'added',
         key,
         value: data2[key],
       });
     } else if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
       if (isPlainObject(data1[key]) && isPlainObject(data2[key])) {
-        acc.concat({
+        acc = acc.concat({
           type: 'nested',
           key,
           children: buildTree(data1[key], data2[key]),
         });
       } else if (data1[key] !== data2[key]) {
-        acc.concat({
+        acc = acc.concat({
           type: 'changed',
           key,
           valueOld: data1[key],
           valueNew: data2[key],
         });
       } else {
-        acc.concat({
+        acc = acc.concat({
           type: 'unchanged',
           key,
           value: data2[key],
