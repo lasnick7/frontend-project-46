@@ -1,9 +1,9 @@
-import { resultStylish, resultPlain, resultJSON } from "../__fixtures__/results.js";
-import gendiff from "../src";
 import path from "node:path";
 import process from "node:process";
-import { test, expect } from "@jest/globals";
 import { describe } from "node:test";
+import { resultStylish, resultPlain, resultJSON } from "../__fixtures__/results.js";
+import gendiff from "../src";
+import { test, expect } from "@jest/globals";
 
 function getResolvePath(filePath) {
     return path.resolve(process.cwd(), `__fixtures__/${filePath}`);
