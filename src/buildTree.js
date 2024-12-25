@@ -1,58 +1,57 @@
-import union from "lodash.union";
-import isPlainObject from "lodash.isplainobject";
+import union from 'lodash.union';
+import isPlainObject from 'lodash.isplainobject';
 
 function buildTree(data1, data2) {
-    const keys = union(Object.keys(data1), Object.keys(data2)).sort();
+  const keys = union(Object.keys(data1), Object.keys(data2)).sort();
 
-    const callback = (acc, key) => {
-        if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
-            acc.push({
-                type: 'deleted',
-                key,
-                value: data1[key],
-            });
-        } else if (!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-            acc.push({
-                type: 'added',
-                key,
-                value: data2[key],
-            });
-        } else if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-            if (isPlainObject(data1[key]) && isPlainObject(data2[key])) {
-                acc.push({
-                    type: 'nested',
-                    key,
-                    children: buildTree(data1[key], data2[key]),
-                });
-            } else if (data1[key] !== data2[key]) {
-                acc.push({
-                    type: 'changed',
-                    key,
-                    valueOld: data1[key],
-                    valueNew: data2[key],
-                });
-            } else {
-                acc.push({
-                    type: 'unchanged',
-                    key,
-                    value: data2[key],
-                });
-            }
-        }
-        return acc;
+  const callback = (acc, key) => {
+    if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
+      acc.push({
+        type: 'deleted',
+        key,
+        value: data1[key],
+      });
+    } else if (!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
+      acc.push({
+        type: 'added',
+        key,
+        value: data2[key],
+      });
+    } else if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
+      if (isPlainObject(data1[key]) && isPlainObject(data2[key])) {
+        acc.push({
+          type: 'nested',
+          key,
+          children: buildTree(data1[key], data2[key]),
+        });
+      } else if (data1[key] !== data2[key]) {
+        acc.push({
+          type: 'changed',
+          key,
+          valueOld: data1[key],
+          valueNew: data2[key],
+        });
+      } else {
+        acc.push({
+          type: 'unchanged',
+          key,
+          value: data2[key],
+        });
+      }
     }
+    return acc;
+  };
 
-    const resultTree = keys.reduce(callback, []);
-    return resultTree;
-};
-
-export default function getTree(data1, data2) {
-    return {
-        type: 'root',
-        children: buildTree(data1, data2),
-    }
+  const resultTree = keys.reduce(callback, []);
+  return resultTree;
 }
 
+export default function getTree(data1, data2) {
+  return {
+    type: 'root',
+    children: buildTree(data1, data2),
+  };
+}
 // const d1 = {
 //     "common": {
 //         "setting1": "Value 1",
