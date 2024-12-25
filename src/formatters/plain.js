@@ -20,33 +20,39 @@ function makePath(keys) {
 
 function makePlainDiff(tree) {
     const children = tree.children;
-    const iter = (branch, acc) => {
-        const callback = (child) => {
-            const path = makePath([acc, child.key]);
+    const iter = (branch, path) => {
+        const callback = (acc, child) => {
+            const newPath = makePath([path, child.key]);
             switch (child.type) {
                 case 'nested': {
-                    return iter(child.children, path);
+                    acc.push(iter(child.children, newPath));
+                    break;
                 }
                 case 'added': {
-                    return `Property '${path}' was added with value: ${getValue(child.value)}`
+                    acc.push(`Property '${newPath}' was added with value: ${getValue(child.value)}`);
+                    break;
                 }
                 case 'deleted': {
-                    return `Property '${path}' was removed`;
+                    acc.push(`Property '${newPath}' was removed`);
+                    break;
                 }
                 case 'changed': {
-                    return `Property '${path}' was updated. From ${getValue(child.valueOld)} to ${getValue(child.valueNew)}`;
+                    acc.push(`Property '${newPath}' was updated. From ${getValue(child.valueOld)} to ${getValue(child.valueNew)}`);
+                    break;
                 }
                 case 'unchanged': {
-                    return null;
+                    acc.push(null);
+                    break;
                 }
                 default: {
                     throw new Error;
                 }
             }
+            return acc;
         }
-        return branch.map((child) => callback(child));
+        return branch.reduce(callback, []);
     }
-    return iter(children, [])
+    return iter(children, []);
 }
 
 export default function makePlain(data) {

@@ -1,4 +1,4 @@
-import { resultStylish, resultPlain } from "../__fixtures__/results.js";
+import { resultStylish, resultPlain, resultJSON } from "../__fixtures__/results.js";
 import gendiff from "../src";
 import path from "node:path";
 import process from "node:process";
@@ -49,20 +49,20 @@ describe('test plain', () => {
     });
 });
 
-// describe('test stylish', () => {
-//     test('test stylish json', () => {
-//         const fileA = getResolvePath('file1.json');
-//         const fileB = getResolvePath('file2.json');
-//         expect(gendiff(fileA, fileB, plain)).toEqual(resultStylish);
-//     });
-//     test('test stylish yaml', () => {
-//         const fileA = getResolvePath('file1.yaml');
-//         const fileB = getResolvePath('file2.yaml');
-//         expect(gendiff(fileA, fileB, plain)).toEqual(resultStylish);
-//     });
-//     test('test file1&file2 yml', () => {
-//         const fileA = getResolvePath('file1.yml');
-//         const fileB = getResolvePath('file2.yml');
-//         expect(gendiff(fileA, fileB, plain)).toEqual(resultStylish);
-//     });
-// });
+describe('test JSON', () => {
+    test('test JSON json', () => {
+        const fileA = getResolvePath('file1.json');
+        const fileB = getResolvePath('file2.json');
+        expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
+    });
+    test('test JSON yaml', () => {
+        const fileA = getResolvePath('file1.yaml');
+        const fileB = getResolvePath('file2.yaml');
+        expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
+    });
+    test('test JSON yml', () => {
+        const fileA = getResolvePath('file1.yml');
+        const fileB = getResolvePath('file2.yml');
+        expect(gendiff(fileA, fileB, 'json')).toEqual(resultJSON);
+    });
+});
