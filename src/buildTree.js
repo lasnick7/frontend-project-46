@@ -14,7 +14,7 @@ function buildTree(data1, data2) {
           value: data1[key],
         },
       ];
-    } 
+    }
     if (!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
       return [
         ...acc,
@@ -24,7 +24,7 @@ function buildTree(data1, data2) {
           value: data2[key],
         },
       ];
-    } 
+    }
     if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
       if (isPlainObject(data1[key]) && isPlainObject(data2[key])) {
         return [
@@ -35,7 +35,7 @@ function buildTree(data1, data2) {
             children: buildTree(data1[key], data2[key]),
           },
         ];
-      } 
+      }
       if (data1[key] !== data2[key]) {
         return [
           ...acc,
